@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Editor</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .editor {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .editor textarea, .editor input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create a Blog Post</h1>
+    <div class="editor">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" placeholder="Enter the title of your blog post">
+        
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="10" placeholder="Write your blog post content here"></textarea>
+        
+        <label for="image">Image URL:</label>
+        <input type="text" id="image" name="image" placeholder="Enter the URL of an image">
+        <img id="preview-image" src="" alt="Image Preview" style="max-width: 100%; display: none;">
+        
+        <label for="video">Video URL:</label>
+        <input type="text" id="video" name="video" placeholder="Enter the URL of a video">
+        <iframe id="video-iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+
+        <button onclick="previewImage()">Preview Image</button>
+        <button onclick="previewVideo()">Preview Video</button>
+
+        <button onclick="saveBlogPost()">Save Blog Post</button>
+    </div>
+
+    <h2>Preview:</h2>
+    <div id="blog-preview">
+        <!-- Preview content will be displayed here -->
+    </div>
+
+    <script>
+        function previewImage() {
+            const imageUrl = document.getElementById('image').value;
+            const imagePreview = document.getElementById('preview-image');
+            imagePreview.src = imageUrl;
+            imagePreview.style.display = 'block';
+        }
+
+        function previewVideo() {
+            const videoUrl = document.getElementById('video').value;
+            const videoIframe = document.getElementById('video-iframe');
+            videoIframe.src = videoUrl;
+        }
+
+        function saveBlogPost() {
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const imageUrl = document.getElementById('image').value;
+            const videoUrl = document.getElementById('video').value;
+
+            // You would typically send this data to a server for storage.
+            // This example just displays it in the preview area.
+            const blogPreview = document.getElementById('blog-preview');
+            blogPreview.innerHTML = `<h3>${title}</h3>`;
+            blogPreview.innerHTML += `<p>${content}</p>`;
+            if (imageUrl) {
+                blogPreview.innerHTML += `<img src="${imageUrl}" alt="Image">`;
+            }
+            if (videoUrl) {
+                blogPreview.innerHTML += `<iframe width="560" height="315" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+            }
+        }
+    </script>
+</body>
+</html>

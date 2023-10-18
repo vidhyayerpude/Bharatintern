@@ -1,0 +1,21 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: left;
+    box-sizing: border-box;
+background-color: aqua;
+}
+.container
+{
+    margin-top: 20px;
+}
+input[type="text"]{
+    padding: 8px;
+    margin-right: 6px;
+}
+button{
+    padding: 8px 8px;
+    color: green;
+    transform: scale(1.1);
+    transition: all 1s;
+    margin: 5%;
+}
